@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>se.thinkcode</groupId>
-    <artifactId>bdd-itake-2017-example</artifactId>
+    <artifactId>bdd-test-conf-vilnius-2017-example</artifactId>
     <version>1.0.0</version>
 
     <properties>
