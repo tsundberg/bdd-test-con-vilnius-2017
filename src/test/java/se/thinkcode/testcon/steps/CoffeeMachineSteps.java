@@ -1,16 +1,11 @@
 package se.thinkcode.testcon.steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java.lt.Duota;
 import cucumber.api.java.lt.Kai;
 import cucumber.api.java.lt.Tada;
-import cucumber.api.java.ro.Atunci;
-import cucumber.api.java.ro.Când;
-import cucumber.api.java.ro.Datefiind;
-import cucumber.api.java.ro.Datfiind;
 import se.thinkcode.testcon.CoffeeMachine;
 
 import static org.junit.Assert.assertTrue;
@@ -35,6 +30,26 @@ public class CoffeeMachineSteps {
 
     @Then("^I should be served a coffee$")
     public void i_should_be_served_a_coffee() throws Throwable {
+        assertTrue("Coffee should have been served", coffeeMachine.wasCoffeeServed());
+    }
+
+    @Duota("^į tai, kad mašinoje paliekama (\\d+) kavos$")
+    public void i_tai_kad_masinoje_paliekama_kavos(int coffees) throws Exception {
+        coffeeMachine = new CoffeeMachine(coffees);
+    }
+
+    @Duota("^padėjote (\\d+) EUR$")
+    public void padejote_EUR(int amount) throws Exception {
+        coffeeMachine.deposit(amount);
+    }
+
+    @Kai("^paspaudžiu kavos mygtuką$")
+    public void paspaudziu_kavos_mygtuka() throws Exception {
+        coffeeMachine.orderCoffee();
+    }
+
+    @Tada("^aš turėčiau būti įteiktas kavos$")
+    public void as_tureciau_buti_iteiktas_kavos() throws Exception {
         assertTrue("Coffee should have been served", coffeeMachine.wasCoffeeServed());
     }
 }
